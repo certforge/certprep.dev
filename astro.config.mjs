@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://certforge.github.io/GITHUB_README',
+  site: 'https://certforge.dev',
   integrations: [],
   build: {
     format: 'directory',

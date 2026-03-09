@@ -1,6 +1,6 @@
 # CertForge Static Site
 
-A lightweight Astro site that showcases every CertForge certification domain, links to the open-source prep repositories, and highlights the hands-on demos that live inside each repo. The site is optimized for GitHub Pages or Cloudflare Pages and enforces tests locally and in CI before deployments run.
+A lightweight Astro site that showcases every CertForge certification domain, links to the open-source prep repositories, and highlights the hands-on demos that live inside each repo. The site is optimized for Cloudflare Pages and enforces tests locally and in CI before deployments run.
 
 ## Tech Stack
 
@@ -8,7 +8,7 @@ A lightweight Astro site that showcases every CertForge certification domain, li
 - TypeScript modules for study-track data
 - [Vitest](https://vitest.dev) for data integrity tests
 - [Husky](https://typicode.github.io/husky) git hooks to block commits when tests fail
-- GitHub Actions workflow for test + deploy to Pages
+- GitHub Actions workflow for Cloudflare Pages deployments
 
 ## Getting Started
 
@@ -37,9 +37,14 @@ The workflow in `.github/workflows/deploy.yml` handles:
 1. `npm ci`
 2. `npm test`
 3. `npm run build`
-4. Upload + deploy to GitHub Pages
+4. Upload to Cloudflare Pages via `cloudflare/pages-action`
 
-The static build artifacts live in `dist/`. Configure Pages to serve from the GitHub Actions workflow output. The same build directory can be uploaded to Cloudflare Pages if desired.
+Add the following GitHub Actions secrets before triggering the workflow:
+
+- `CLOUDFLARE_API_TOKEN` — Pages write token scoped to the target account/project
+- `CLOUDFLARE_ACCOUNT_ID`
+
+Update `projectName` inside the workflow if you change the Pages project slug. The build output directory remains `dist/`, which is what the action publishes.
 
 ## Project Structure
 
