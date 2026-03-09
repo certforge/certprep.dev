@@ -1,0 +1,10 @@
+.DS_Store
+node_modules
+dist
+.astro
+coverage
+.env
+.env.*
+npm-debug.log*
+pnpm-lock.yaml
+yarn.lock

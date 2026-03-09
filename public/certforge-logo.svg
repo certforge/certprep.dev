@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 248" width="200" height="248">
+  <defs>
+    <linearGradient id="hexBg" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c"/>
+      <stop offset="50%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="anvilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#64748b"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Flat-top hexagon badge: center(100,103), radius 80 -->
+  <!-- vertices: 0°(180,103), 60°(140,172), 120°(60,172), 180°(20,103), 240°(60,34), 300°(140,34) -->
+  <polygon
+    points="180,103 140,172 60,172 20,103 60,34 140,34"
+    fill="url(#hexBg)"
+    filter="url(#shadow)"/>
+
+  <!-- Inner accent ring (radius 72) -->
+  <polygon
+    points="172,103 135,165 65,165 28,103 65,41 135,41"
+    fill="none" stroke="#f97316" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- FLAME: sits on top of anvil face (y=92), tip at y=40 -->
+  <path d="M 100,92
+           C 82,86 73,72 83,60
+           C 87,54 93,48 100,40
+           C 107,48 113,54 117,60
+           C 127,72 118,86 100,92 Z"
+        fill="url(#flameGrad)"/>
+
+  <!-- Flame inner highlight -->
+  <path d="M 100,88
+           C 89,84 84,74 90,65
+           C 93,60 97,56 100,50
+           C 103,56 107,60 110,65
+           C 116,74 111,84 100,88 Z"
+        fill="#fbbf24" opacity="0.42"/>
+
+  <!-- ANVIL: top face with pointed left horn -->
+  <!-- Rectangle face + left horn tip at (30,102) -->
+  <path d="M 148,92 L 148,112 L 52,112 L 30,102 L 52,92 Z"
+        fill="url(#anvilGrad)"/>
+
+  <!-- Anvil face top highlight -->
+  <rect x="52" y="92" width="96" height="3" fill="white" opacity="0.18"/>
+
+  <!-- Anvil body -->
+  <rect x="78" y="112" width="44" height="22" rx="1" fill="#64748b"/>
+
+  <!-- Anvil base -->
+  <rect x="63" y="134" width="74" height="18" rx="3" fill="#475569"/>
+
+  <!-- Base top highlight -->
+  <rect x="63" y="134" width="74" height="3" rx="1" fill="white" opacity="0.11"/>
+
+  <!-- Sparks (right side) -->
+  <circle cx="126" cy="57" r="2.5" fill="#fbbf24"/>
+  <circle cx="134" cy="47" r="1.5" fill="#fbbf24" opacity="0.75"/>
+  <circle cx="140" cy="56" r="1"   fill="#fbbf24" opacity="0.5"/>
+
+  <!-- Sparks (left side) -->
+  <circle cx="72"  cy="55" r="2"   fill="#fbbf24" opacity="0.65"/>
+  <circle cx="66"  cy="45" r="1.5" fill="#fbbf24" opacity="0.45"/>
+
+  <!-- WORDMARK -->
+  <text x="100" y="214"
+        font-family="'Arial Black', Impact, 'Helvetica Neue', Arial, sans-serif"
+        font-weight="900"
+        font-size="22"
+        text-anchor="middle"
+        letter-spacing="1.5">
+    <tspan fill="#0f172a">CERT</tspan><tspan fill="#f97316">FORGE</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="100" y="232"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="8.5"
+        fill="#94a3b8"
+        text-anchor="middle"
+        letter-spacing="2.8">LEARN · BUILD · CERTIFY</text>
+</svg>

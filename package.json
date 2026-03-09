@@ -1,0 +1,26 @@
+{
+  "name": "certforge-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "astro check",
+    "prepare": "husky install"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "astro": "^4.10.2",
+    "husky": "^9.0.11",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
+  }
+}

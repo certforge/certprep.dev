@@ -1,0 +1,50 @@
+---
+import type { Track } from "../data/tracks";
+
+const { track }: { track: Track } = Astro.props;
+---
+
+<section class="domain-breakdown" aria-labelledby={`domains-${track.id}`}>
+  <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:center;">
+    <div>
+      <p class="tag" style="margin:0;">{track.examCode}</p>
+      <h3 id={`domains-${track.id}`} style="margin:0.45rem 0;">{track.title} · Domain Map</h3>
+      <p style="max-width:640px; color:var(--text-muted);">
+        Weighted to the official blueprint so your study plan mirrors the scoring rubric. Each tile links to runnable labs inside the repo.
+      </p>
+    </div>
+    <div style="text-align:right;">
+      <a class="button" href={`${track.repoUrl}/tree/main/demos`} target="_blank" rel="noreferrer">
+        Browse Labs
+      </a>
+    </div>
+  </div>
+
+  <div class="domain-list">
+    {track.domains.map((domain) => (
+      <article class="domain-item">
+        <h4>{domain.name} · {domain.weight}%</h4>
+        <ul>
+          {domain.focus.map((focus) => (
+            <li>{focus}</li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+
+  <div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:1rem;">
+    {track.labs.map((lab) => (
+      <div style="border:1px dashed rgba(249,115,22,0.5); border-radius:14px; padding:0.85rem 1rem; flex:1 1 220px;">
+        <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--brand-muted);">
+          {lab.type}
+        </div>
+        <strong>{lab.title}</strong>
+        <p style="margin:0.25rem 0 0.75rem; color:var(--text-muted);">{lab.description}</p>
+        <a href={`${track.repoUrl}/tree/main/${lab.path}`} target="_blank" rel="noreferrer" style="color:var(--brand-accent); font-weight:600;">
+          Open resource →
+        </a>
+      </div>
+    ))}
+  </div>
+</section>

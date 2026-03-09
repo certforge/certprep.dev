@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "CertForge | Learn. Build. Certify.",
+  description = "Open certification prep labs engineered for GitHub, cloud, and DevSecOps practitioners."
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/certforge-logo.svg" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header>
+        <div class="nav-shell">
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <img src="/certforge-logo.svg" alt="CertForge logo" width="48" height="48" />
+            <div>
+              <strong>CertForge</strong>
+              <div style="font-size:0.8rem; color:var(--brand-muted);">Learn · Build · Certify</div>
+            </div>
+          </div>
+          <nav class="nav-links">
+            <a href="#tracks">Tracks</a>
+            <a href="#domains">Domains</a>
+            <a href="#labs">Labs</a>
+            <a href="#contribute">Contribute</a>
+          </nav>
+          <a class="button" href="https://github.com/certforge" target="_blank" rel="noreferrer">
+            Explore GitHub
+          </a>
+        </div>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="footer">
+        Built with ❤️ by the CertForge community. Licensed MIT.
+      </footer>
+    </div>
+  </body>
+</html>

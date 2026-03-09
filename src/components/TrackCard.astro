@@ -1,0 +1,24 @@
+---
+import type { Track } from "../data/tracks";
+
+const { track }: { track: Track } = Astro.props;
+---
+
+<article class="card" id={track.id}>
+  <div class="tag">{track.examCode} · {track.status === "available" ? "Available" : track.status}</div>
+  <h3>{track.title}</h3>
+  <p>{track.summary}</p>
+  <ul style="margin:0; padding-left:1.15rem; color:var(--text-muted);">
+    {track.highlights.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+  <div style="margin-top:auto; display:flex; gap:0.75rem; flex-wrap:wrap;">
+    <a class="button" href={track.repoUrl} target="_blank" rel="noreferrer">
+      View Repo
+    </a>
+    <a class="button" style="border-color:rgba(148,163,184,.4)" href={`${track.repoUrl}/blob/main/${track.quickStart}`} target="_blank" rel="noreferrer">
+      Quick Start
+    </a>
+  </div>
+</article>

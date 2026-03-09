@@ -1,0 +1,102 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TrackCard from "../components/TrackCard.astro";
+import DomainDetails from "../components/DomainDetails.astro";
+import { tracks } from "../data/tracks";
+import { valueProps } from "../data/value-props";
+
+const totalDomains = tracks.reduce((sum, track) => sum + track.domains.length, 0);
+const totalLabs = tracks.reduce((sum, track) => sum + track.labs.length, 0);
+---
+
+<BaseLayout title="CertForge | Open Certification Prep" description="Static study hub connecting GitHub certification domains with runnable labs, workflows, and scripts.">
+  <section class="hero">
+    <div class="tag" style="margin-bottom:1rem; background:rgba(94,234,212,0.15); color:#5eead4;">
+      Open Certification Practice
+    </div>
+    <h1>Domain-weighted labs for GitHub, DevSecOps & Azure AI exams.</h1>
+    <p>
+      Every CertForge repository mirrors its exam blueprint. Use the tracks below to jump into opinionated study guides,
+      runnable labs, and deployment-ready workflows you can fork into your org.
+    </p>
+    <div class="hero-actions">
+      <a class="button" href="https://github.com/certforge" target="_blank" rel="noreferrer">Browse on GitHub</a>
+      <a class="button" style="border-color:rgba(148,163,184,.4)" href="#tracks">View Tracks</a>
+    </div>
+    <div style="display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap;">
+      <div>
+        <div style="font-size:2rem; font-weight:700;">{tracks.length}</div>
+        <div style="color:var(--text-muted);">Active certification tracks</div>
+      </div>
+      <div>
+        <div style="font-size:2rem; font-weight:700;">{totalDomains}</div>
+        <div style="color:var(--text-muted);">Mapped domains</div>
+      </div>
+      <div>
+        <div style="font-size:2rem; font-weight:700;">{totalLabs}</div>
+        <div style="color:var(--text-muted);">Hands-on labs & scripts</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tracks">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <p class="tag" style="margin-bottom:0.5rem;">Tracks</p>
+        <h2 style="margin:0;">Choose your certification mission</h2>
+        <p style="color:var(--text-muted); max-width:640px;">
+          Each repo is production-ready with README study plans, `/docs` domain deep dives, `/demos` lab blueprints, and automation inside `/scripts`.
+        </p>
+      </div>
+      <a class="button" href="https://github.com/orgs/certforge/discussions" target="_blank" rel="noreferrer">Request a track</a>
+    </div>
+    <div class="grid">
+      {tracks.map((track) => (
+        <TrackCard track={track} />
+      ))}
+    </div>
+  </section>
+
+  <section id="domains" style="margin-top:3rem;">
+    <p class="tag" style="margin-bottom:0.5rem;">Domain-Weighted Study Plans</p>
+    <h2 style="margin:0;">Understand the rubric before you study</h2>
+    <p style="color:var(--text-muted); max-width:720px;">
+      Every section below links straight to the markdown or workflow backing that concept so you can audit the objective coverage easily.
+    </p>
+    {tracks.map((track) => (
+      <DomainDetails track={track} />
+    ))}
+  </section>
+
+  <section id="labs" style="margin-top:3rem;">
+    <p class="tag" style="margin-bottom:0.5rem;">Practical study principles</p>
+    <h2>Built by engineers for engineers</h2>
+    <div class="value-props">
+      {valueProps.map((value) => (
+        <article class="value-prop">
+          <h3>{value.title}</h3>
+          <p style="color:var(--text-muted);">{value.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="contribute" style="margin-top:3rem;">
+    <p class="tag" style="margin-bottom:0.5rem;">Sustainability</p>
+    <h2>Keep the content exam-current</h2>
+    <div class="card" style="background:rgba(2,6,23,.4)">
+      <p style="color:var(--text-muted);">
+        Spot drift with the latest blueprint? Use the org-level <code>CONTRIBUTING.md</code> plus repo-specific guides to open issues or PRs.
+        Validate labs locally, attach screenshots, and link the official documentation that backs your update.
+      </p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a class="button" href="https://github.com/certforge/.github/blob/main/CONTRIBUTING.md" target="_blank" rel="noreferrer">
+          Contribution Guide
+        </a>
+        <a class="button" href="https://github.com/orgs/certforge/discussions/new?category=ideas" target="_blank" rel="noreferrer">
+          Start a Discussion
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
