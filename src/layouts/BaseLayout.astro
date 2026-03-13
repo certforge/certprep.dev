@@ -1,10 +1,20 @@
 ---
 import "../styles/global.css";
+import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, absoluteUrl } from "../lib/site";
 
 const {
-  title = "CertPrep | Learn. Build. Certify.",
-  description = "Open certification prep labs engineered for GitHub, cloud, and DevSecOps practitioners."
+  title = `${SITE_NAME} | Learn. Build. Certify.`,
+  description = DEFAULT_DESCRIPTION,
+  image = DEFAULT_OG_IMAGE,
+  noindex = false,
+  keywords = [],
+  structuredData = []
 } = Astro.props;
+
+const canonicalUrl = Astro.url ? Astro.url.toString() : absoluteUrl("/");
+const imageUrl = image.startsWith("http") ? image : absoluteUrl(image);
+const robots = noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large";
+const structuredDataBlocks = Array.isArray(structuredData) ? structuredData : [structuredData];
 ---
 
 <!DOCTYPE html>
@@ -14,7 +24,27 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="author" content={SITE_NAME} />
+    <meta name="generator" content="Astro" />
+    <meta name="theme-color" content="#f8fafc" />
+    {keywords.length > 0 && <meta name="keywords" content={keywords.join(", ")} />}
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/certprep-logo.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    {structuredDataBlocks.filter(Boolean).map((block) => (
+      <script type="application/ld+json" set:html={JSON.stringify(block)} />
+    ))}
   </head>
   <body>
     <div class="page-shell">
@@ -29,9 +59,9 @@ const {
             </div>
           </div>
           <nav class="nav-links" aria-label="Primary">
-            <a href="#tracks">Tracks</a>
+            <a href="/#tracks">Tracks</a>
             <div class="nav-dropdown">
-              <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+              <button class="nav-trigger" type="button" aria-haspopup="true">
                 Exam Prep Help
               </button>
               <div class="nav-menu" role="menu">
@@ -43,8 +73,8 @@ const {
                 <a role="menuitem" href="/exam-prep">All blueprints</a>
               </div>
             </div>
-            <a href="#toolkit">Prep Toolkit</a>
-            <a href="#contribute">Contribute</a>
+            <a href="/#toolkit">Prep Toolkit</a>
+            <a href="/#contribute">Contribute</a>
           </nav>
           <a class="button" href="https://github.com/certforge" target="_blank" rel="noreferrer">
             Explore GitHub

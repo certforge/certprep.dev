@@ -23,7 +23,12 @@ const { track }: { track: Track } = Astro.props;
   <div class="domain-list">
     {track.domains.map((domain) => (
       <article class="domain-item">
-        <h4>{domain.name} · {domain.weight}%</h4>
+        <h4>
+          {domain.name} <span style="color:var(--text-muted); font-weight:400;">· {domain.weight}%</span>
+        </h4>
+        <div class="domain-weight-bar">
+          <div class="domain-weight-fill" style={`width:${domain.weight}%`}></div>
+        </div>
         <ul>
           {domain.focus.map((focus) => (
             <li>{focus}</li>
@@ -33,15 +38,13 @@ const { track }: { track: Track } = Astro.props;
     ))}
   </div>
 
-  <div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:1rem;">
+  <div class="lab-cards">
     {track.labs.map((lab) => (
-      <div style="border:1px dashed rgba(249,115,22,0.5); border-radius:14px; padding:0.85rem 1rem; flex:1 1 220px;">
-        <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--brand-muted);">
-          {lab.type}
-        </div>
+      <div class="lab-card">
+        <span class={`lab-badge lab-badge-${lab.type}`}>{lab.type}</span>
         <strong>{lab.title}</strong>
-        <p style="margin:0.25rem 0 0.75rem; color:var(--text-muted);">{lab.description}</p>
-        <a href={`${track.repoUrl}/tree/main/${lab.path}`} target="_blank" rel="noreferrer" style="color:var(--brand-accent); font-weight:600;">
+        <p style="margin:0; color:var(--text-muted);">{lab.description}</p>
+        <a href={`${track.repoUrl}/tree/main/${lab.path}`} target="_blank" rel="noreferrer">
           Open resource →
         </a>
       </div>

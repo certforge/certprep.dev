@@ -2,9 +2,15 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import DomainDetails from "../../components/DomainDetails.astro";
 import { tracks } from "../../data/tracks";
+import { examPrepIndexStructuredData } from "../../lib/structured-data";
 ---
 
-<BaseLayout title="CertPrep | Exam Blueprints" description="Domain blueprints for every CertPrep track. Use these pages to align study time with exam weighting.">
+<BaseLayout
+  title="CertPrep | Exam Blueprints"
+  description="Certification exam blueprint pages covering domain weights, focus areas, and direct links into each CertPrep repository."
+  keywords={["exam blueprint", "certification study guide", "domain weights", "certification labs"]}
+  structuredData={examPrepIndexStructuredData()}
+>
   <section class="hero">
     <div>
       <span class="tag">Exam prep help</span>

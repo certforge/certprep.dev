@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DomainDetails from "../../components/DomainDetails.astro";
+import { tracks } from "../../data/tracks";
+import { examTrackStructuredData } from "../../lib/structured-data";
+
+export function getStaticPaths() {
+  return tracks.map((track) => ({
+    params: { slug: track.id },
+    props: { track }
+  }));
+}
+
+const { track } = Astro.props;
+---
+
+<BaseLayout
+  title={`CertPrep | ${track.examCode} Exam Blueprint`}
+  description={`${track.examCode}: ${track.title} certification blueprint with domain weights, study focus areas, and direct links into the repo.`}
+  keywords={[track.examCode, track.title, "exam blueprint", "certification prep", "study guide"]}
+  structuredData={examTrackStructuredData(track)}
+>
+  <section class="hero">
+    <div>
+      <span class="tag">{track.examCode}</span>
+      <h1>{track.title} blueprint</h1>
+      <p>{track.summary}</p>
+    </div>
+  </section>
+
+  <DomainDetails track={track} />
+</BaseLayout>

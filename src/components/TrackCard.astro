@@ -5,7 +5,7 @@ const { track }: { track: Track } = Astro.props;
 ---
 
 <article class="card" id={track.id}>
-  <div class="tag">{track.examCode}: {track.title}</div>
+  <div class="tag">{track.examCode}</div>
   <h3>{track.title}</h3>
   <p>{track.summary}</p>
   <ul style="margin:0; padding-left:1.15rem; color:var(--text-muted);">
@@ -17,7 +17,7 @@ const { track }: { track: Track } = Astro.props;
     <a class="button" href={track.repoUrl} target="_blank" rel="noreferrer">
       View Repo
     </a>
-    <a class="button" style="border-color:rgba(148,163,184,.4)" href={`${track.repoUrl}/blob/main/${track.quickStart}`} target="_blank" rel="noreferrer">
+    <a class="button secondary" href={`${track.repoUrl}/blob/main/${track.quickStart}`} target="_blank" rel="noreferrer">
       Quick Start
     </a>
   </div>

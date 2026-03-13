@@ -3,12 +3,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TrackCard from "../components/TrackCard.astro";
 import { tracks } from "../data/tracks";
 import { valueProps } from "../data/value-props";
+import { homeStructuredData } from "../lib/structured-data";
 
 const totalDomains = tracks.reduce((sum, track) => sum + track.domains.length, 0);
 const totalLabs = tracks.reduce((sum, track) => sum + track.labs.length, 0);
+const faqItems = [
+  {
+    question: "How should I study with CertPrep?",
+    answer:
+      "Start with the exam blueprint page, follow the weighted domain docs, run the linked demos or scripts, and then finish with mocks or quick references."
+  },
+  {
+    question: "Which certification tracks are available?",
+    answer: tracks.map((track) => `${track.examCode}: ${track.title}`).join("; ")
+  },
+  {
+    question: "Does CertPrep include hands-on material?",
+    answer:
+      "Yes. Every track links to runnable demos, scripts, quick references, and where available practice questions or mock exams."
+  }
+];
 ---
 
-<BaseLayout title="CertPrep | Community-Driven Certification Labs" description="Modern certification prep for engineers. Domain-weighted study guides, runnable labs, and a community that keeps every track exam-current.">
+<BaseLayout
+  title="CertPrep | Certification Prep Hub"
+  description="Open certification prep hub with blueprint-aligned guides, runnable demos, mock exams, and community-maintained study resources."
+  keywords={["certification prep", "GitHub certification", "AI certification", "cloud certification", "study guides"]}
+  structuredData={homeStructuredData()}
+>
   <section class="hero">
     <div class="hero-grid">
       <div>
@@ -93,8 +115,22 @@ const totalLabs = tracks.reduce((sum, track) => sum + track.labs.length, 0);
     <div class="value-props">
       {valueProps.map((value) => (
         <article class="value-prop">
+          <div class="value-prop-icon">{value.icon}</div>
           <h3>{value.title}</h3>
           <p style="color:var(--text-muted);">{value.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section style="margin-top:3rem;">
+    <p class="tag" style="margin-bottom:0.5rem;">Questions people ask</p>
+    <h2 class="section-title">Quick answers</h2>
+    <div class="value-props">
+      {faqItems.map((item) => (
+        <article class="value-prop">
+          <h3>{item.question}</h3>
+          <p style="color:var(--text-muted);">{item.answer}</p>
         </article>
       ))}
     </div>
