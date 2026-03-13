@@ -6,7 +6,7 @@ describe("track metadata", () => {
     expect(tracks.length).toBeGreaterThanOrEqual(3);
   });
 
-  it("aligns every track with a CertForge repository", () => {
+  it("aligns every track with a CertPrep repository", () => {
     for (const track of tracks) {
       expect(track.repoUrl).toMatch(/^https:\/\/github.com\/certforge\//);
       expect(track.quickStart).toMatch(/docs\/.+\.md$/);

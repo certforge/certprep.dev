@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+  <defs>
+    <linearGradient id="lineGrad" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="320" fill="#08132a" rx="32"/>
+
+  <!-- Ribbon line with arrow -->
+  <path d="M110 170 H222 L260 128 L300 170 H418 L458 118 L510 170" fill="none" stroke="url(#lineGrad)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <polygon points="458,118 510,170 510,110" fill="#a855f7"/>
+
+  <!-- CERTPREP wordmark -->
+  <text x="300" y="230" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="800" font-size="64" text-anchor="middle" letter-spacing="6" fill="url(#textGrad)">
+    CERTPREP
+  </text>
+
+  <!-- Domain tag -->
+  <text x="300" y="270" font-family="'Inter', 'Segoe UI', sans-serif" font-weight="600" font-size="28" text-anchor="middle" letter-spacing="8" fill="#5b6b92" opacity="0.8">
+    CERTPREP.DEV
+  </text>
+</svg>

@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DomainDetails from "../../components/DomainDetails.astro";
+import { tracks } from "../../data/tracks";
+---
+
+<BaseLayout title="CertPrep | Exam Blueprints" description="Domain blueprints for every CertPrep track. Use these pages to align study time with exam weighting.">
+  <section class="hero">
+    <div>
+      <span class="tag">Exam prep help</span>
+      <h1>Blueprints for every track</h1>
+      <p>
+        These pages map directly to each exam blueprint so you can prioritize domains, follow the repo structure, and
+        jump into the right labs first.
+      </p>
+    </div>
+  </section>
+
+  {tracks.map((track) => (
+    <DomainDetails track={track} />
+  ))}
+</BaseLayout>

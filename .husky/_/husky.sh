@@ -1,8 +1,9 @@
+echo "husky - DEPRECATED
+
+Please remove the following two lines from $0:
+
 #!/usr/bin/env sh
-# shellcheck shell=sh
+. \"\$(dirname -- \"\$0\")/_/husky.sh\"
 
-if [ -z "$husky_skip_init" ]; then
-  husky_skip_init=1
-
-  export PATH="${PATH}:./node_modules/.bin"
-fi
+They WILL FAIL in v10.0.0
+"

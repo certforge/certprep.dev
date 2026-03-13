@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="CertPrep | 404" description="This page fell out of the repo history.">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="tag">404 / Not found</span>
+        <h1>Commit not found.</h1>
+        <p>
+          You hit a branch that does not exist. Try checking the remote, or jump back to a known-good
+          blueprint.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/">Back to home</a>
+          <a class="button secondary" href="/exam-prep">Exam blueprints</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div style="font-family:var(--font-display); font-size:1rem;">Suggested actions</div>
+        <ul style="margin:0; padding-left:1.2rem; color:var(--text-muted); line-height:1.7;">
+          <li>Run <code>git status</code> to confirm your working tree.</li>
+          <li>Search the track list for the correct exam code.</li>
+          <li>Open <code>README.md</code> in the repo for the right path.</li>
+        </ul>
+        <div style="margin-top:1rem; font-size:0.9rem; color:var(--text-muted);">
+          Error: <code>HEAD detached from reality</code>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

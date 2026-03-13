@@ -5,7 +5,7 @@ const { track }: { track: Track } = Astro.props;
 ---
 
 <article class="card" id={track.id}>
-  <div class="tag">{track.examCode} · {track.status === "available" ? "Available" : track.status}</div>
+  <div class="tag">{track.examCode}: {track.title}</div>
   <h3>{track.title}</h3>
   <p>{track.summary}</p>
   <ul style="margin:0; padding-left:1.15rem; color:var(--text-muted);">

@@ -1,6 +1,6 @@
-# CertForge Static Site
+# CertPrep Static Site
 
-A lightweight Astro site that showcases every CertForge certification domain, links to the open-source prep repositories, and highlights the hands-on demos that live inside each repo. The site is optimized for Cloudflare Pages and enforces tests locally and in CI before deployments run.
+A lightweight Astro site that showcases every CertPrep certification domain, links to the open-source prep repositories, and highlights the hands-on demos that live inside each repo. The site is optimized for Cloudflare Pages and enforces tests locally and in CI before deployments run.
 
 ## Tech Stack
 
@@ -28,7 +28,7 @@ npm test        # one-off
 npm run test:watch
 ```
 
-The tests verify that each track’s domain weights total 100%, every repo link resolves to the CertForge org, and that each track exposes labs/scripts for the website to promote.
+The tests verify that each track’s domain weights total 100%, every repo link resolves to the CertPrep org, and that each track exposes labs/scripts for the website to promote.
 
 ## Deployment
 

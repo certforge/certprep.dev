@@ -1,4 +1,4 @@
-name: Test & Deploy (Cloudflare Pages)
+name: Test & Deploy (GitHub Pages)
 
 on:
   push:
@@ -7,7 +7,15 @@ on:
 
 env:
   NODE_VERSION: 20
-  CLOUDFLARE_PAGES_PROJECT: certforge-dev
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -32,10 +40,19 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ env.CLOUDFLARE_PAGES_PROJECT }}
-          directory: dist
+          path: dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

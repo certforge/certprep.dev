@@ -2,7 +2,7 @@
 import "../styles/global.css";
 
 const {
-  title = "CertForge | Learn. Build. Certify.",
+  title = "CertPrep | Learn. Build. Certify.",
   description = "Open certification prep labs engineered for GitHub, cloud, and DevSecOps practitioners."
 } = Astro.props;
 ---
@@ -14,23 +14,36 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/certforge-logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/certprep-logo.svg" />
   </head>
   <body>
     <div class="page-shell">
+      <a class="skip-link" href="#main-content">Skip to main content</a>
       <header>
         <div class="nav-shell">
           <div style="display:flex; align-items:center; gap:0.75rem;">
-            <img src="/certforge-logo.svg" alt="CertForge logo" width="48" height="48" />
-            <div>
-              <strong>CertForge</strong>
-              <div style="font-size:0.8rem; color:var(--brand-muted);">Learn · Build · Certify</div>
+            <img src="/certprep-logo.svg" alt="CertPrep logo" width="48" height="48" />
+            <div class="brand-lockup">
+              <strong class="brand-title">CertPrep</strong>
+              <div class="brand-tagline">Learn · Build · Certify</div>
             </div>
           </div>
-          <nav class="nav-links">
+          <nav class="nav-links" aria-label="Primary">
             <a href="#tracks">Tracks</a>
-            <a href="#domains">Domains</a>
-            <a href="#labs">Labs</a>
+            <div class="nav-dropdown">
+              <button class="nav-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+                Exam Prep Help
+              </button>
+              <div class="nav-menu" role="menu">
+                <a role="menuitem" href="/exam-prep/gh-100">GH-100</a>
+                <a role="menuitem" href="/exam-prep/gh-500">GH-500</a>
+                <a role="menuitem" href="/exam-prep/gh-900">GH-900</a>
+                <a role="menuitem" href="/exam-prep/ai-102">AI-102</a>
+                <a role="menuitem" href="/exam-prep/aip-c01">AIP-C01</a>
+                <a role="menuitem" href="/exam-prep">All blueprints</a>
+              </div>
+            </div>
+            <a href="#toolkit">Prep Toolkit</a>
             <a href="#contribute">Contribute</a>
           </nav>
           <a class="button" href="https://github.com/certforge" target="_blank" rel="noreferrer">
@@ -38,11 +51,11 @@ const {
           </a>
         </div>
       </header>
-      <main>
+      <main id="main-content" tabindex="-1">
         <slot />
       </main>
       <footer class="footer">
-        Built with ❤️ by the CertForge community. Licensed MIT.
+        Built by the CertPrep community. Licensed MIT.
       </footer>
     </div>
   </body>

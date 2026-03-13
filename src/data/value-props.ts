@@ -5,19 +5,19 @@ export type ValueProp = {
 
 export const valueProps: ValueProp[] = [
   {
-    title: "Domain-Weighted Content",
-    description: "Every repo allocates depth proportional to the official blueprint so you study what matters most."
+    title: "Blueprint-first study",
+    description: "Every guide tracks the official domain weights so time spent matches the scoring rubric."
   },
   {
-    title: "Hands-on First",
-    description: "Labs ship with runnable scripts, sample repos, and automation that mirrors real enterprise constraints."
+    title: "Labs you can fork",
+    description: "Each concept ships with runnable scripts, repo patterns, and automation you can adapt to real teams."
   },
   {
-    title: "Automation Included",
-    description: "From GHAS org onboarding scripts to Azure deployment templates, every concept comes with code."
+    title: "Community maintained",
+    description: "Discussion threads, PR reviews, and contributor checklists keep content accurate and fresh."
   },
   {
-    title: "Community Maintained",
-    description: "Issue templates, PR guides, and contribution rituals keep the content accurate and exam-ready."
+    title: "Review built in",
+    description: "Quick references, mock questions, and domain maps make repetition and recall part of the workflow."
   }
 ];

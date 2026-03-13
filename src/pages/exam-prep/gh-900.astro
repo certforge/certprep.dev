@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DomainDetails from "../../components/DomainDetails.astro";
+import { tracks } from "../../data/tracks";
+
+const track = tracks.find((item) => item.id === "gh-900");
+---
+
+<BaseLayout title="CertPrep | GH-900 Exam Blueprint" description="GH-900 domain blueprint and prep assets.">
+  {track ? (
+    <DomainDetails track={track} />
+  ) : (
+    <p>Track not found.</p>
+  )}
+</BaseLayout>

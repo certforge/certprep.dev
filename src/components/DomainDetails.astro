@@ -8,9 +8,9 @@ const { track }: { track: Track } = Astro.props;
   <div style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:center;">
     <div>
       <p class="tag" style="margin:0;">{track.examCode}</p>
-      <h3 id={`domains-${track.id}`} style="margin:0.45rem 0;">{track.title} · Domain Map</h3>
+      <h3 id={`domains-${track.id}`} style="margin:0.45rem 0;">{track.title} · Exam Blueprint</h3>
       <p style="max-width:640px; color:var(--text-muted);">
-        Weighted to the official blueprint so your study plan mirrors the scoring rubric. Each tile links to runnable labs inside the repo.
+        Weighted to the official blueprint so your study plan mirrors the scoring rubric. Each tile links to the docs, labs, or scripts that cover the domain.
       </p>
     </div>
     <div style="text-align:right;">

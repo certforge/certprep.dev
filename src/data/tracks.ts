@@ -108,6 +108,67 @@ const ai102Domains: DomainHighlight[] = [
   }
 ];
 
+const aipC01Domains: DomainHighlight[] = [
+  {
+    name: "Generative AI Foundations",
+    weight: 20,
+    focus: ["Model fundamentals", "Service selection", "Responsible AI"]
+  },
+  {
+    name: "Model & Data Lifecycle",
+    weight: 30,
+    focus: ["Data prep & labeling", "Customization strategy", "Evaluation loops"]
+  },
+  {
+    name: "Production Deployment",
+    weight: 30,
+    focus: ["Latency & cost", "Integrations", "Resilience patterns"]
+  },
+  {
+    name: "Operations & Governance",
+    weight: 20,
+    focus: ["Monitoring & drift", "Security controls", "FinOps"]
+  }
+];
+
+const gh900Domains: DomainHighlight[] = [
+  {
+    name: "Introduction to Git and GitHub",
+    weight: 22,
+    focus: ["Core concepts", "Accounts & identity", "Visibility & access"]
+  },
+  {
+    name: "Working with GitHub Repositories",
+    weight: 8,
+    focus: ["Files & branches", "Tags & releases", "Repository settings"]
+  },
+  {
+    name: "Collaboration Features",
+    weight: 30,
+    focus: ["Pull requests", "Reviews", "Issues & discussions"]
+  },
+  {
+    name: "Modern Development",
+    weight: 13,
+    focus: ["Codespaces", "Runners", "Actions basics"]
+  },
+  {
+    name: "Project Management",
+    weight: 7,
+    focus: ["Projects", "Milestones", "Planning workflows"]
+  },
+  {
+    name: "Privacy, Security, and Administration",
+    weight: 10,
+    focus: ["Authentication", "Security features", "Policies"]
+  },
+  {
+    name: "Benefits of the GitHub Community",
+    weight: 10,
+    focus: ["Open source", "Community standards", "Participation"]
+  }
+];
+
 export const tracks: Track[] = [
   {
     id: "gh-500",
@@ -214,6 +275,78 @@ export const tracks: Track[] = [
         description: "Checklist-driven deployment gate with policy artifacts.",
         path: "docs/05-responsible-ai.md",
         type: "demo"
+      }
+    ]
+  },
+  {
+    id: "aip-c01",
+    examCode: "AIP-C01",
+    title: "AWS Generative AI Developer – Professional",
+    status: "available",
+    summary:
+      "Offline-first AWS GenAI prep with domain guides, mock exams, and production-grade architecture playbooks.",
+    repoUrl: "https://github.com/certforge/AIP-C01_Cert_Prep",
+    quickStart: "docs/domain-01-foundations.md",
+    highlights: [
+      "Scenario-based mock exams with answer keys",
+      "Guardrails, evals, and RAG decisioning",
+      "Architecture playbooks for production rollout"
+    ],
+    domains: aipC01Domains,
+    labs: [
+      {
+        title: "Prompt Patterns + Guardrails",
+        description: "Practice prompt strategies and safety rules offline.",
+        path: "demos/01-foundations",
+        type: "demo"
+      },
+      {
+        title: "Customization Planner",
+        description: "Choose between RAG and fine-tuning with evaluation rubrics.",
+        path: "demos/02-development",
+        type: "demo"
+      },
+      {
+        title: "Full Mock Exams",
+        description: "Timed scenario exams with rationale-rich answers.",
+        path: "mocks",
+        type: "quiz"
+      }
+    ]
+  },
+  {
+    id: "gh-900",
+    examCode: "GH-900",
+    title: "GitHub Foundations",
+    status: "available",
+    summary:
+      "Hands-on fundamentals for first-time GitHub cert candidates, with labs, cheatsheets, and practice questions.",
+    repoUrl: "https://github.com/certforge/GH_900_Cert_Prep",
+    quickStart: "docs/01-introduction-to-git-and-github.md",
+    highlights: [
+      "Microsoft Learn + GitHub Skills study path",
+      "Domain-weighted cheatsheets",
+      "Scenario-based practice questions"
+    ],
+    domains: gh900Domains,
+    labs: [
+      {
+        title: "Intro to Git + GitHub",
+        description: "Core concepts and workflows for new GitHub users.",
+        path: "demos/01-introduction-to-git-and-github",
+        type: "demo"
+      },
+      {
+        title: "Collaboration Essentials",
+        description: "Pull requests, reviews, and issue workflows in action.",
+        path: "demos/03-collaboration-features",
+        type: "demo"
+      },
+      {
+        title: "Practice Questions",
+        description: "Scenario-driven quizzes aligned to the exam domains.",
+        path: "practice-questions",
+        type: "quiz"
       }
     ]
   }
